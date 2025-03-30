@@ -8,6 +8,7 @@ import Revenue from "./pages/Revenue";
 import Expenses from "./pages/Expenses";
 import Budget from "./pages/Budget";
 import Forecast from "./pages/Forecast";
+import Taxes from "./pages/Taxes";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
         <Route path="/expenses" element={<Expenses />} />
         <Route path="/budget" element={<Budget />} />
         <Route path="/forecast" element={<Forecast />} />
+        <Route path="/taxes" element={<Taxes />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
