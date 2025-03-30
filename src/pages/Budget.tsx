@@ -1,4 +1,5 @@
 
+import { useState } from "react";
 import AppSidebar from "@/components/AppSidebar";
 import Header from "@/components/Header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Calendar, Download, Filter, Plus, ArrowRight, Check, AlertTriangle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import NewBudgetDialog from "@/components/budget/NewBudgetDialog";
+import { toast } from "sonner";
 
 const budgetData = [
   { month: 'Ene', presupuestado: 12000, real: 10000, variacion: -2000 },
@@ -67,6 +70,14 @@ const departmentBudgets = [
 ];
 
 export default function Budget() {
+  const [newBudgetDialogOpen, setNewBudgetDialogOpen] = useState(false);
+  
+  const handleCreateBudget = (values: any) => {
+    toast.success("Presupuesto creado con éxito", {
+      description: `${values.name} - €${Number(values.amount).toLocaleString('es-ES')}`,
+    });
+  };
+
   return (
     <div className="flex h-screen overflow-hidden">
       <AppSidebar />
@@ -88,7 +99,10 @@ export default function Budget() {
                 <Download className="h-4 w-4 mr-2" />
                 Exportar
               </Button>
-              <Button style={{ backgroundColor: "#227C9D" }}>
+              <Button 
+                style={{ backgroundColor: "#227C9D" }}
+                onClick={() => setNewBudgetDialogOpen(true)}
+              >
                 <Plus className="h-4 w-4 mr-2" />
                 Nuevo Presupuesto
               </Button>
@@ -240,6 +254,12 @@ export default function Budget() {
               </div>
             </CardContent>
           </Card>
+          
+          <NewBudgetDialog 
+            open={newBudgetDialogOpen} 
+            onOpenChange={setNewBudgetDialogOpen}
+            onSubmit={handleCreateBudget}
+          />
         </main>
       </div>
     </div>
