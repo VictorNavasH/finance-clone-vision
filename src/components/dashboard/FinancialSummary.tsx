@@ -1,37 +1,38 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TrendingUp, TrendingDown, DollarSign, PiggyBank } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function FinancialSummary() {
   const summaryCards = [
     {
-      title: "Total Revenue",
-      value: "$24,560.00",
-      change: "+15.2%",
+      title: "Ingresos Totales",
+      value: "€24.560,00",
+      change: "+15,2%",
       isPositive: true,
       icon: DollarSign,
-      color: "text-finance-accent",
+      color: "text-finance-secondary",
     },
     {
-      title: "Total Expenses",
-      value: "$12,310.00",
-      change: "+9.1%",
+      title: "Gastos Totales",
+      value: "€12.310,00",
+      change: "+9,1%",
       isPositive: false,
       icon: TrendingDown,
       color: "text-finance-danger",
     },
     {
-      title: "Net Profit",
-      value: "$12,250.00",
-      change: "+22.5%",
+      title: "Beneficio Neto",
+      value: "€12.250,00",
+      change: "+22,5%",
       isPositive: true,
       icon: TrendingUp,
-      color: "text-finance-accent",
+      color: "text-finance-secondary",
     },
     {
-      title: "Budget Variance",
-      value: "+$3,840.00",
-      change: "+3.8%",
+      title: "Variación Presupuesto",
+      value: "+€3.840,00",
+      change: "+3,8%",
       isPositive: true,
       icon: PiggyBank,
       color: "text-finance-primary",
@@ -49,10 +50,10 @@ export default function FinancialSummary() {
             <card.icon className={cn("h-5 w-5", card.color)} />
           </CardHeader>
           <CardContent className="px-4 pb-4">
-            <div className="text-2xl font-bold">{card.value}</div>
+            <div className="text-2xl font-bold text-finance-text">{card.value}</div>
             <div className={cn(
               "text-sm flex items-center",
-              card.isPositive ? "text-finance-accent" : "text-finance-danger"
+              card.isPositive ? "text-finance-secondary" : "text-finance-danger"
             )}>
               {card.isPositive ? <TrendingUp className="h-3 w-3 mr-1" /> : <TrendingDown className="h-3 w-3 mr-1" />}
               {card.change}
@@ -63,5 +64,3 @@ export default function FinancialSummary() {
     </div>
   );
 }
-
-import { cn } from "@/lib/utils";

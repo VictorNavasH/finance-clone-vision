@@ -8,30 +8,30 @@ export default function UpcomingPayments() {
   const payments = [
     {
       id: 1,
-      name: "Office Rent",
-      amount: "$2,100",
-      dueDate: "Oct 15, 2023",
+      name: "Alquiler de Oficina",
+      amount: "€2.100",
+      dueDate: "15 Oct, 2023",
       status: "pending",
     },
     {
       id: 2,
-      name: "Insurance Premium",
-      amount: "$750",
-      dueDate: "Oct 20, 2023",
+      name: "Prima de Seguro",
+      amount: "€750",
+      dueDate: "20 Oct, 2023",
       status: "pending",
     },
     {
       id: 3,
-      name: "Supplier Invoice",
-      amount: "$1,450",
-      dueDate: "Oct 25, 2023",
+      name: "Factura de Proveedor",
+      amount: "€1.450",
+      dueDate: "25 Oct, 2023",
       status: "pending",
     },
     {
       id: 4,
-      name: "Cloud Services",
-      amount: "$380",
-      dueDate: "Oct 30, 2023",
+      name: "Servicios Cloud",
+      amount: "€380",
+      dueDate: "30 Oct, 2023",
       status: "pending",
     },
   ];
@@ -40,8 +40,8 @@ export default function UpcomingPayments() {
     <Card>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <div>
-          <CardTitle className="text-base font-semibold">Upcoming Payments</CardTitle>
-          <CardDescription>Next 30 days expenses</CardDescription>
+          <CardTitle className="text-base font-semibold text-finance-text">Pagos Próximos</CardTitle>
+          <CardDescription>Gastos para los próximos 30 días</CardDescription>
         </div>
         <CalendarClock className="h-5 w-5 text-muted-foreground" />
       </CardHeader>
@@ -56,10 +56,10 @@ export default function UpcomingPayments() {
               <div className="flex items-center gap-2">
                 <span className="font-semibold">{payment.amount}</span>
                 <Badge className={cn(
-                  "bg-amber-100 text-amber-700 hover:bg-amber-200 hover:text-amber-800",
-                  payment.status === "paid" && "bg-green-100 text-green-700 hover:bg-green-200 hover:text-green-800"
+                  "bg-finance-accent/20 text-finance-dark hover:bg-finance-accent/30",
+                  payment.status === "paid" && "bg-finance-secondary/20 text-finance-secondary hover:bg-finance-secondary/30"
                 )}>
-                  {payment.status === "pending" ? "Pending" : "Paid"}
+                  {payment.status === "pending" ? "Pendiente" : "Pagado"}
                 </Badge>
               </div>
             </div>
@@ -67,7 +67,7 @@ export default function UpcomingPayments() {
         </div>
         <div className="mt-4 text-sm">
           <a href="#" className="flex items-center text-finance-primary hover:underline">
-            View all expenses
+            Ver todos los gastos
             <ArrowUpRight className="h-3 w-3 ml-1" />
           </a>
         </div>

@@ -63,16 +63,16 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Finance theme colors
+				// Nueva paleta de colores basada en https://coolors.co/palette/227c9d-17c3b2-ffcb77-fef9ef-fe6d73
 				finance: {
-					primary: '#0EA5E9', // Bright blue
-					secondary: '#7E69AB', // Secondary purple
-					accent: '#22C55E', // Success green
-					warning: '#F97316', // Warning orange
-					danger: '#EF4444', // Danger red
-					neutral: '#8E9196', // Neutral gray
-					light: '#F8FAFC', // Light background
-					dark: '#1A1F2C', // Dark background
+					primary: '#227C9D', // Azul marino
+					secondary: '#17C3B2', // Verde azulado
+					accent: '#FFCB77', // Amarillo
+					light: '#FEF9EF', // Blanco hueso
+					danger: '#FE6D73', // Coral
+					text: '#2F2F4C', // Color de texto especificado
+					neutral: '#8E9196', // Mantener el gris neutral
+					dark: '#2F2F4C', // Color oscuro basado en el color de texto
 				}
 			},
 			borderRadius: {

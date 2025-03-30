@@ -21,27 +21,27 @@ const Index = () => {
       <AppSidebar />
       <div className="flex-1 flex flex-col overflow-y-auto">
         <Header />
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-6 text-finance-text">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold">Financial Dashboard</h2>
+            <h2 className="text-2xl font-bold">Cuadro de Mando Financiero</h2>
             <div className="flex gap-2">
               <Button variant="outline">
                 <Calendar className="h-4 w-4 mr-2" />
-                Oct 1 - Oct 31, 2023
+                1 Oct - 31 Oct, 2023
               </Button>
-              <Button variant="default">
+              <Button variant="default" style={{ backgroundColor: "#227C9D" }}>
                 <CreditCard className="h-4 w-4 mr-2" />
-                Add Transaction
+                Añadir Transacción
               </Button>
             </div>
           </div>
 
           <Tabs value={view} onValueChange={setView} className="mb-6">
             <TabsList>
-              <TabsTrigger value="all">All</TabsTrigger>
-              <TabsTrigger value="revenue">Revenue</TabsTrigger>
-              <TabsTrigger value="expenses">Expenses</TabsTrigger>
-              <TabsTrigger value="budget">Budget</TabsTrigger>
+              <TabsTrigger value="all">Todo</TabsTrigger>
+              <TabsTrigger value="revenue">Ingresos</TabsTrigger>
+              <TabsTrigger value="expenses">Gastos</TabsTrigger>
+              <TabsTrigger value="budget">Presupuesto</TabsTrigger>
             </TabsList>
           </Tabs>
           
@@ -65,6 +65,6 @@ const Index = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Index;

@@ -3,15 +3,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
 
 const data = [
-  { name: "Labor", value: 5300 },
-  { name: "Rent", value: 2100 },
+  { name: "Personal", value: 5300 },
+  { name: "Alquiler", value: 2100 },
   { name: "Marketing", value: 1800 },
-  { name: "Utilities", value: 950 },
-  { name: "Supplies", value: 1200 },
-  { name: "Other", value: 950 },
+  { name: "Servicios", value: 950 },
+  { name: "Suministros", value: 1200 },
+  { name: "Otros", value: 950 },
 ];
 
-const COLORS = ["#0EA5E9", "#7E69AB", "#22C55E", "#F97316", "#8E9196", "#D946EF"];
+const COLORS = ["#227C9D", "#17C3B2", "#FFCB77", "#FE6D73", "#2F2F4C", "#8E9196"];
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: any) => {
@@ -30,8 +30,8 @@ export default function ExpenseBreakdown() {
   return (
     <Card className="col-span-1 lg:col-span-2">
       <CardHeader>
-        <CardTitle>Expense Breakdown</CardTitle>
-        <CardDescription>Distribution of monthly expenses by category</CardDescription>
+        <CardTitle className="text-finance-text">Desglose de Gastos</CardTitle>
+        <CardDescription>Distribución de gastos mensuales por categoría</CardDescription>
       </CardHeader>
       <CardContent className="h-[300px]">
         <ResponsiveContainer width="100%" height="100%">
@@ -50,7 +50,7 @@ export default function ExpenseBreakdown() {
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>
-            <Tooltip formatter={(value: number) => [`$${value}`, "Amount"]} />
+            <Tooltip formatter={(value: number) => [`€${value}`, "Importe"]} />
             <Legend />
           </PieChart>
         </ResponsiveContainer>

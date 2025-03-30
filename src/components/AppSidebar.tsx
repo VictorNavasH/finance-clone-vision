@@ -9,7 +9,6 @@ import {
   PiggyBank, 
   Calculator, 
   Settings, 
-  Menu,
   ChevronRight,
   ChevronLeft
 } from "lucide-react";
@@ -17,13 +16,13 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const sidebarItems = [
-  { icon: Home, label: "Dashboard", path: "/" },
-  { icon: BarChart3, label: "Revenue", path: "/revenue" },
-  { icon: DollarSign, label: "Expenses", path: "/expenses" },
-  { icon: LineChart, label: "Forecasting", path: "/forecast" },
-  { icon: PiggyBank, label: "Budget", path: "/budget" },
-  { icon: Calculator, label: "Taxes", path: "/taxes" },
-  { icon: Settings, label: "Settings", path: "/settings" },
+  { icon: Home, label: "Inicio", path: "/" },
+  { icon: BarChart3, label: "Ingresos", path: "/revenue" },
+  { icon: DollarSign, label: "Gastos", path: "/expenses" },
+  { icon: LineChart, label: "Previsiones", path: "/forecast" },
+  { icon: PiggyBank, label: "Presupuesto", path: "/budget" },
+  { icon: Calculator, label: "Impuestos", path: "/taxes" },
+  { icon: Settings, label: "Ajustes", path: "/settings" },
 ];
 
 export default function AppSidebar() {
@@ -58,7 +57,7 @@ export default function AppSidebar() {
           <Link 
             key={index} 
             to={item.path}
-            className="flex items-center px-4 py-2 mb-1 hover:bg-sidebar-accent transition-colors"
+            className="flex items-center px-4 py-2 mb-1 hover:bg-finance-light transition-colors text-finance-text"
           >
             <item.icon className={cn("h-5 w-5 text-finance-primary", collapsed ? "mx-auto" : "mr-2")} />
             {!collapsed && <span>{item.label}</span>}
