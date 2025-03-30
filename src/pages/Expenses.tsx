@@ -1,12 +1,15 @@
 
 import AppSidebar from "@/components/AppSidebar";
 import Header from "@/components/Header";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { Calendar, Download, Filter, Plus, TrendingUp, TrendingDown, FileText } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Calendar, Download, Filter } from "lucide-react";
+import ExpenseStats from "@/components/expenses/ExpenseStats";
+import RecentExpensesTable from "@/components/expenses/RecentExpensesTable";
+import ExpenseForm from "@/components/expenses/ExpenseForm";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { useState } from "react";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 
 const monthlyExpenses = [
   { month: 'Ene', operaciones: 4200, marketing: 1800, administracion: 1400, desarrollo: 2600, total: 10000 },
@@ -41,6 +44,8 @@ const recentExpenses = [
 ];
 
 export default function Expenses() {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
   return (
     <div className="flex h-screen overflow-hidden">
       <AppSidebar />
@@ -62,66 +67,29 @@ export default function Expenses() {
                 <Download className="h-4 w-4 mr-2" />
                 Exportar
               </Button>
-              <Button style={{ backgroundColor: "#227C9D" }}>
-                <Plus className="h-4 w-4 mr-2" />
-                Registrar Gasto
-              </Button>
+              <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
+                <DialogTrigger asChild>
+                  <Button style={{ backgroundColor: "#227C9D" }}>
+                    Registrar Gasto
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[600px]">
+                  <ExpenseForm />
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-            <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-sm font-medium text-muted-foreground">
-                  Gastos Totales
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-bold">€142.100</div>
-                <div className="text-sm text-finance-danger flex items-center">
-                  <TrendingUp className="h-3 w-3 mr-1" />
-                  +8,2% respecto al año anterior
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-sm font-medium text-muted-foreground">
-                  Gasto Mensual Promedio
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-bold">€11.841</div>
-                <div className="text-sm text-finance-danger flex items-center">
-                  <TrendingUp className="h-3 w-3 mr-1" />
-                  +5,4% respecto al año anterior
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-sm font-medium text-muted-foreground">
-                  Eficiencia de Gastos
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-bold">59,2%</div>
-                <div className="text-sm text-finance-secondary flex items-center">
-                  <TrendingDown className="h-3 w-3 mr-1" />
-                  -2,5% respecto al año anterior
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+          <ExpenseStats />
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-            <Card className="lg:col-span-2">
-              <CardHeader>
-                <CardTitle>Evolución de Gastos</CardTitle>
-                <CardDescription>Desglose mensual de gastos por categoría</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="h-[400px]">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 my-6">
+            <div className="lg:col-span-2 card">
+              <Tabs defaultValue="chart" className="w-full">
+                <TabsList className="mb-4">
+                  <TabsTrigger value="chart">Gráfico</TabsTrigger>
+                  <TabsTrigger value="breakdown">Desglose</TabsTrigger>
+                </TabsList>
+                <TabsContent value="chart" className="h-[400px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart
                       data={monthlyExpenses}
@@ -143,17 +111,38 @@ export default function Expenses() {
                       <Bar dataKey="desarrollo" name="Desarrollo" fill="#FE6D73" />
                     </BarChart>
                   </ResponsiveContainer>
-                </div>
-              </CardContent>
-            </Card>
+                </TabsContent>
+                <TabsContent value="breakdown" className="h-[400px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                      layout="vertical"
+                      data={monthlyExpenses}
+                      margin={{
+                        top: 5,
+                        right: 30,
+                        left: 50,
+                        bottom: 5,
+                      }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis type="number" />
+                      <YAxis dataKey="month" type="category" />
+                      <Tooltip formatter={(value) => [`€${value}`, 'Gastos']} />
+                      <Legend />
+                      <Bar dataKey="total" name="Total" fill="#227C9D" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </TabsContent>
+              </Tabs>
+            </div>
             
-            <Card>
-              <CardHeader>
-                <CardTitle>Distribución de Gastos</CardTitle>
-                <CardDescription>Por categoría principal</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="h-[300px]">
+            <div>
+              <Tabs defaultValue="pie" className="w-full h-full">
+                <TabsList className="mb-4">
+                  <TabsTrigger value="pie">Distribución</TabsTrigger>
+                  <TabsTrigger value="comparison">Comparativa</TabsTrigger>
+                </TabsList>
+                <TabsContent value="pie" className="h-[300px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                       <Pie
@@ -173,51 +162,34 @@ export default function Expenses() {
                       <Tooltip formatter={(value: number) => [`€${value}`, "Importe"]} />
                     </PieChart>
                   </ResponsiveContainer>
-                </div>
-              </CardContent>
-            </Card>
+                </TabsContent>
+                <TabsContent value="comparison" className="h-[300px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                      data={[
+                        { name: 'Actual', value: 142100 },
+                        { name: 'Presupuestado', value: 135000 }
+                      ]}
+                      margin={{
+                        top: 5,
+                        right: 30,
+                        left: 20,
+                        bottom: 5,
+                      }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip formatter={(value) => [`€${value}`, 'Total']} />
+                      <Bar dataKey="value" name="Valor" fill="#227C9D" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </TabsContent>
+              </Tabs>
+            </div>
           </div>
           
-          <Card>
-            <CardHeader>
-              <CardTitle>Gastos Recientes</CardTitle>
-              <CardDescription>Últimas transacciones registradas</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b text-left">
-                      <th className="pb-2 font-medium">Descripción</th>
-                      <th className="pb-2 font-medium">Categoría</th>
-                      <th className="pb-2 font-medium">Importe</th>
-                      <th className="pb-2 font-medium">Fecha</th>
-                      <th className="pb-2 font-medium text-right">Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {recentExpenses.map((expense) => (
-                      <tr key={expense.id} className="border-b last:border-0">
-                        <td className="py-3">{expense.description}</td>
-                        <td className="py-3">
-                          <Badge variant="outline" className="bg-finance-light text-finance-text">
-                            {expense.category}
-                          </Badge>
-                        </td>
-                        <td className="py-3 font-medium">{expense.amount}</td>
-                        <td className="py-3 text-muted-foreground">{expense.date}</td>
-                        <td className="py-3 text-right">
-                          <Button variant="ghost" size="icon">
-                            <FileText className="h-4 w-4" />
-                          </Button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </CardContent>
-          </Card>
+          <RecentExpensesTable expenses={recentExpenses} />
         </main>
       </div>
     </div>
