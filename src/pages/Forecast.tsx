@@ -1,4 +1,5 @@
 
+import { TooltipProvider } from "@/components/ui/tooltip";
 import AppSidebar from "@/components/AppSidebar";
 import Header from "@/components/Header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
