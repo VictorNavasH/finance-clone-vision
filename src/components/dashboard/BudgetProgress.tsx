@@ -46,10 +46,13 @@ export default function BudgetProgress() {
                   €{category.spent} / €{category.allocated}
                 </span>
               </div>
-              <Progress value={category.progress} className="h-2" style={{
-                backgroundColor: "#FEF9EF",
-                "--tw-bg-opacity": 1
-              }} />
+              <Progress 
+                value={category.progress} 
+                className="h-2" 
+                style={{
+                  backgroundColor: "#FEF9EF"
+                }} 
+              />
               <div className="flex justify-end mt-1">
                 <span className="text-xs text-muted-foreground">
                   {category.progress}% utilizado
