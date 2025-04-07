@@ -67,18 +67,18 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="p-4 sm:p-6">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
+    <div className="p-3 sm:p-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-3">
         <h1 className="text-2xl sm:text-3xl font-bold text-finance-text">Cuadro de Mando</h1>
         <div className="flex flex-wrap gap-2">
-          <Button variant="outline" size={isMobile ? "sm" : "default"} className="h-9">
+          <Button variant="outline" size={isMobile ? "sm" : "default"} className="h-8">
             <Calendar className="h-4 w-4 mr-2" />
             <span className="whitespace-nowrap">1 Oct - 31 Oct, 2023</span>
           </Button>
           <Button 
             variant="default" 
             size={isMobile ? "sm" : "default"}
-            className="h-9 bg-finance-primary hover:bg-finance-primary/90"
+            className="h-8 bg-finance-primary hover:bg-finance-primary/90"
           >
             <CreditCard className="h-4 w-4 mr-2" />
             <span className="whitespace-nowrap">Añadir Transacción</span>
@@ -86,7 +86,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <Tabs value={view} onValueChange={setView} className="mb-4">
+      <Tabs value={view} onValueChange={setView} className="mb-3">
         <TabsList className="w-full sm:w-auto grid grid-cols-4 sm:inline-flex">
           <TabsTrigger value="all">Todo</TabsTrigger>
           <TabsTrigger value="revenue">Ingresos</TabsTrigger>
@@ -95,9 +95,9 @@ export default function Dashboard() {
         </TabsList>
       </Tabs>
       
-      <div className="space-y-4">
+      <div className="space-y-3">
         {/* KPI Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {kpiData.map((kpi, index) => (
             <KpiBlock
               key={index}
@@ -113,15 +113,15 @@ export default function Dashboard() {
         </div>
         
         {/* Revenue Chart */}
-        <div className="grid grid-cols-1 gap-4">
+        <div className="grid grid-cols-1 gap-3">
           <RevenueChart />
         </div>
         
         {/* Other Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-3">
           <ExpenseBreakdown />
           <BudgetProgress />
-          <div className="col-span-1 lg:col-span-2 space-y-4">
+          <div className="col-span-1 lg:col-span-2 space-y-3">
             <ForecastCard />
             <UpcomingPayments />
           </div>
