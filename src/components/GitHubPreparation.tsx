@@ -27,7 +27,27 @@ export default function GitHubPreparation() {
         </div>
 
         <div>
-          <h3 className="text-lg font-semibold mb-2">3. Contenido del README.md</h3>
+          <h3 className="text-lg font-semibold mb-2">3. Requisitos previos</h3>
+          <p className="text-muted-foreground mb-2">
+            Antes de clonar y ejecutar el proyecto, asegúrate de tener instalado:
+          </p>
+          <ul className="list-disc list-inside text-muted-foreground space-y-1 ml-2">
+            <li>Node.js (versión 16 o superior) - <a href="https://nodejs.org" className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">https://nodejs.org</a></li>
+            <li>npm (normalmente viene incluido con Node.js)</li>
+            <li>Git - <a href="https://git-scm.com/downloads" className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">https://git-scm.com/downloads</a></li>
+          </ul>
+          <p className="text-muted-foreground mt-2">
+            Puedes verificar tus instalaciones con estos comandos:
+          </p>
+          <div className="bg-muted p-3 rounded-md text-sm font-mono mt-2">
+            node --version<br />
+            npm --version<br />
+            git --version
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold mb-2">4. Contenido del README.md</h3>
           <div className="bg-muted p-4 rounded-md text-sm">
             <pre className="whitespace-pre-wrap break-words">
               {`# Aplicación de Gestión Financiera
@@ -51,11 +71,17 @@ Esta aplicación web permite gestionar finanzas empresariales, incluyendo gastos
 
 ## Instalación
 \`\`\`bash
+# Requisitos previos
+# Asegúrate de tener instalado Node.js (v16+) y npm
+# https://nodejs.org
+
 # Clonar el repositorio
 git clone [URL_DEL_REPOSITORIO]
 
-# Instalar dependencias
+# Navegar al directorio del proyecto
 cd [NOMBRE_DEL_PROYECTO]
+
+# Instalar dependencias
 npm install
 
 # Iniciar el servidor de desarrollo
@@ -82,7 +108,7 @@ Navega a \`http://localhost:8080\` para ver la aplicación.
         </div>
 
         <div>
-          <h3 className="text-lg font-semibold mb-2">4. Clonación y ejecución local</h3>
+          <h3 className="text-lg font-semibold mb-2">5. Clonación y ejecución local</h3>
           <p className="text-muted-foreground mb-2">
             Una vez que tu código esté en GitHub, cualquier persona puede clonarlo y ejecutarlo localmente con estos comandos:
           </p>
@@ -91,6 +117,35 @@ Navega a \`http://localhost:8080\` para ver la aplicación.
             cd [NOMBRE_DEL_PROYECTO]<br />
             npm install<br />
             npm run dev
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold mb-2">6. Solución de problemas comunes</h3>
+          <div className="space-y-3">
+            <div>
+              <h4 className="font-medium">Error: 'npm' no se reconoce como un comando interno o externo</h4>
+              <p className="text-muted-foreground text-sm">
+                Esto significa que Node.js no está instalado correctamente o no está en tu PATH. Solución:
+              </p>
+              <ul className="list-disc list-inside text-muted-foreground text-sm space-y-1 ml-2">
+                <li>Reinstala Node.js desde <a href="https://nodejs.org" className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">nodejs.org</a></li>
+                <li>Asegúrate de marcar la opción "Add to PATH" durante la instalación</li>
+                <li>Reinicia tu terminal o computadora después de la instalación</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-medium">Error: No se pueden instalar las dependencias</h4>
+              <p className="text-muted-foreground text-sm">
+                Prueba estos comandos alternativos:
+              </p>
+              <div className="bg-muted p-3 rounded-md text-xs font-mono mt-1">
+                # Si npm falla, intenta con:<br />
+                npx npm install<br /><br />
+                # O utiliza yarn si lo tienes instalado:<br />
+                yarn install
+              </div>
+            </div>
           </div>
         </div>
 
