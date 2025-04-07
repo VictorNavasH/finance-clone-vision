@@ -33,7 +33,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 199 89% 48%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 210 40% 98%;
     --sidebar-foreground: 222.2 84% 4.9%;
@@ -96,6 +96,31 @@
   }
 }
 
+@layer components {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20 shadow-lg;
+  }
+  
+  /* Transition effects */
+  .fade-in {
+    @apply transition-opacity duration-300 ease-in-out;
+  }
+  
+  .slide-in {
+    @apply transition-transform duration-300 ease-in-out;
+  }
+  
+  /* Hover effects */
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/20;
+  }
+}
+
+/* Custom scrollbar */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
@@ -103,4 +128,28 @@
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Animated backgrounds */
+.bg-animated-gradient {
+  background: linear-gradient(-45deg, #227C9D, #17C3B2, #FFCB77, #FE6D73);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Soft shadows for cards */
+.card-shadow {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
