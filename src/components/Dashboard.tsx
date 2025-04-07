@@ -67,8 +67,8 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="space-y-6 p-6 pb-16">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+    <div className="p-4 sm:p-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
         <h1 className="text-2xl sm:text-3xl font-bold text-finance-text">Cuadro de Mando</h1>
         <div className="flex flex-wrap gap-2">
           <Button variant="outline" size={isMobile ? "sm" : "default"} className="h-9">
@@ -86,7 +86,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <Tabs value={view} onValueChange={setView} className="mb-6">
+      <Tabs value={view} onValueChange={setView} className="mb-4">
         <TabsList className="w-full sm:w-auto grid grid-cols-4 sm:inline-flex">
           <TabsTrigger value="all">Todo</TabsTrigger>
           <TabsTrigger value="revenue">Ingresos</TabsTrigger>
@@ -95,7 +95,7 @@ export default function Dashboard() {
         </TabsList>
       </Tabs>
       
-      <div className="space-y-6">
+      <div className="space-y-4">
         {/* KPI Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {kpiData.map((kpi, index) => (
@@ -113,15 +113,15 @@ export default function Dashboard() {
         </div>
         
         {/* Revenue Chart */}
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 gap-4">
           <RevenueChart />
         </div>
         
         {/* Other Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
           <ExpenseBreakdown />
           <BudgetProgress />
-          <div className="col-span-1 lg:col-span-2 space-y-6">
+          <div className="col-span-1 lg:col-span-2 space-y-4">
             <ForecastCard />
             <UpcomingPayments />
           </div>
