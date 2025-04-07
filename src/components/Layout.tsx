@@ -25,7 +25,7 @@ export function Layout({ children }: LayoutProps) {
   }, [isMobile]);
 
   return (
-    <div className="flex min-h-screen overflow-hidden bg-background">
+    <div className="flex h-screen overflow-hidden bg-background">
       {/* Sidebar - fixed en desktop, overlay en móvil */}
       <div 
         className={cn(
@@ -58,7 +58,7 @@ export function Layout({ children }: LayoutProps) {
           onSidebarOpenChange={setSidebarOpen} 
         />
 
-        <main className="flex-1">
+        <main className="flex-1 overflow-auto">
           {children}
         </main>
 
