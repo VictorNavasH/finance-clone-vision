@@ -58,8 +58,10 @@ export function Layout({ children }: LayoutProps) {
           onSidebarOpenChange={setSidebarOpen} 
         />
 
-        <main className="flex-1 overflow-auto page-content">
-          {children}
+        <main className="flex-1 overflow-auto">
+          <div className="p-6 md:p-8 lg:p-10">
+            {children}
+          </div>
         </main>
 
         {/* Botón flotante para abrir sidebar en móvil */}

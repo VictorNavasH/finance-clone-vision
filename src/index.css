@@ -119,11 +119,6 @@
     @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/20;
   }
   
-  /* Content padding para todas las páginas */
-  .page-content {
-    @apply p-6 md:p-8 lg:p-10;
-  }
-  
   .dashboard-card {
     @apply rounded-lg shadow-md transition-shadow hover:shadow-lg;
   }
