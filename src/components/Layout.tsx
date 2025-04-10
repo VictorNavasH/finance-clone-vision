@@ -50,7 +50,7 @@ export function Layout({ children }: LayoutProps) {
       
       {/* Contenido principal */}
       <div className={cn(
-        "flex flex-col flex-1 transition-all duration-300 overflow-auto",
+        "flex flex-col flex-1 transition-all duration-300 overflow-hidden",
         !isMobile && sidebarOpen ? "ml-64" : !isMobile && !sidebarOpen ? "ml-16" : ""
       )}>
         <Header 
@@ -59,7 +59,7 @@ export function Layout({ children }: LayoutProps) {
         />
 
         <main className="flex-1 overflow-auto">
-          <div className="p-6 md:p-8 lg:p-10">
+          <div className="container mx-auto px-4 py-6 md:py-8 lg:py-10 max-w-7xl">
             {children}
           </div>
         </main>

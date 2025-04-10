@@ -31,31 +31,31 @@ const revenueBySource = [
 export default function Revenue() {
   return (
     <Layout>
-      <div className="w-full">
-        <div className="flex justify-between items-center mb-8">
+      <div>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
           <h2 className="text-3xl font-bold">Análisis de Ingresos</h2>
-          <div className="flex gap-2">
-            <Button variant="outline">
+          <div className="flex flex-wrap gap-2">
+            <Button variant="outline" size="sm" className="h-9">
               <Calendar className="h-4 w-4 mr-2" />
               Año 2023
             </Button>
-            <Button variant="outline">
+            <Button variant="outline" size="sm" className="h-9">
               <Filter className="h-4 w-4 mr-2" />
               Filtrar
             </Button>
-            <Button variant="outline">
+            <Button variant="outline" size="sm" className="h-9">
               <Download className="h-4 w-4 mr-2" />
               Exportar
             </Button>
-            <Button style={{ backgroundColor: "#227C9D" }}>
+            <Button style={{ backgroundColor: "#227C9D" }} size="sm" className="h-9">
               <Plus className="h-4 w-4 mr-2" />
               Añadir Ingreso
             </Button>
           </div>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-          <Card>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8">
+          <Card className="shadow-sm">
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground">
                 Ingresos Totales
@@ -68,7 +68,7 @@ export default function Revenue() {
               </div>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="shadow-sm">
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground">
                 Ingreso Mensual Promedio
@@ -81,7 +81,7 @@ export default function Revenue() {
               </div>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="shadow-sm">
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground">
                 Tasa de Crecimiento
@@ -96,7 +96,7 @@ export default function Revenue() {
           </Card>
         </div>
         
-        <Card className="mb-8">
+        <Card className="mb-8 shadow-sm">
           <CardHeader>
             <CardTitle>Tendencias de Ingresos</CardTitle>
             <CardDescription>Desglose mensual de ingresos por fuente</CardDescription>
@@ -158,8 +158,8 @@ export default function Revenue() {
           </CardContent>
         </Card>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <Card>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
+          <Card className="shadow-sm">
             <CardHeader>
               <CardTitle>Ingresos por Fuente</CardTitle>
               <CardDescription>Desglose de ingresos por área de negocio</CardDescription>
@@ -187,13 +187,13 @@ export default function Revenue() {
             </CardContent>
           </Card>
           
-          <Card>
+          <Card className="shadow-sm">
             <CardHeader>
               <CardTitle>Ingresos Trimestrales</CardTitle>
               <CardDescription>Rendimiento de ingresos por trimestre</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-4 md:gap-6">
                 <div className="bg-muted/20 p-4 rounded-lg">
                   <div className="text-sm font-medium text-muted-foreground mb-2">T1</div>
                   <div className="text-2xl font-bold">€41.500</div>
