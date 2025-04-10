@@ -48,7 +48,7 @@ export function Layout({ children }: LayoutProps) {
         />
       )}
       
-      {/* Contenido principal - Ajustando los márgenes */}
+      {/* Contenido principal */}
       <div className={cn(
         "flex flex-col flex-1 transition-all duration-300 overflow-auto",
         !isMobile && sidebarOpen ? "ml-64" : !isMobile && !sidebarOpen ? "ml-16" : ""

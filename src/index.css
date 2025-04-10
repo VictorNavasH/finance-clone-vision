@@ -119,8 +119,8 @@
     @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/20;
   }
   
-  /* Dashboard content padding - Updating this to improve spacing */
-  .dashboard-container {
+  /* Content padding para todas las páginas */
+  .page-content {
     @apply p-6 md:p-8 lg:p-10;
   }
   

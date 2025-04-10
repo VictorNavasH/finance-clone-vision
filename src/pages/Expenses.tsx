@@ -41,7 +41,7 @@ export default function Expenses() {
 
   return (
     <Layout>
-      <div className="p-6 md:p-8 lg:p-10">
+      <div className="page-content">
         <h1 className="text-3xl font-bold mb-8 text-finance-text">Gestión de Gastos</h1>
         
         <Tabs defaultValue="overview" className="w-full">
