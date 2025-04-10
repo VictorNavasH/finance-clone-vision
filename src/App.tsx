@@ -1,37 +1,33 @@
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Index from "./pages/Index";
-import Revenue from "./pages/Revenue";
+import NotFound from "./pages/NotFound";
 import Expenses from "./pages/Expenses";
+import Revenue from "./pages/Revenue";
 import Budget from "./pages/Budget";
 import Forecast from "./pages/Forecast";
 import Taxes from "./pages/Taxes";
 import Settings from "./pages/Settings";
-import NotFound from "./pages/NotFound";
+import RestaurantOccupancy from "./pages/RestaurantOccupancy";
+import { Toaster } from "@/components/ui/toaster";
 
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <Toaster />
-    <Sonner />
-    <BrowserRouter>
+function App() {
+  return (
+    <>
       <Routes>
         <Route path="/" element={<Index />} />
-        <Route path="/revenue" element={<Revenue />} />
         <Route path="/expenses" element={<Expenses />} />
+        <Route path="/revenue" element={<Revenue />} />
         <Route path="/budget" element={<Budget />} />
         <Route path="/forecast" element={<Forecast />} />
         <Route path="/taxes" element={<Taxes />} />
         <Route path="/settings" element={<Settings />} />
-        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="/restaurant-occupancy" element={<RestaurantOccupancy />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
-  </QueryClientProvider>
-);
+      <Toaster />
+    </>
+  );
+}
 
 export default App;

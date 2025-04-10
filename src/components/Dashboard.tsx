@@ -1,3 +1,4 @@
+
 import { KpiBlock } from "@/components/ui/kpi-block";
 import RevenueChart from "@/components/dashboard/RevenueChart";
 import ExpenseBreakdown from "@/components/dashboard/ExpenseBreakdown";
@@ -5,10 +6,11 @@ import BudgetProgress from "@/components/dashboard/BudgetProgress";
 import ForecastCard from "@/components/dashboard/ForecastCard";
 import UpcomingPayments from "@/components/dashboard/UpcomingPayments";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Calendar, CreditCard, DollarSign, TrendingUp, TrendingDown, PiggyBank } from "lucide-react";
+import { Calendar, CreditCard, DollarSign, TrendingUp, TrendingDown, PiggyBank, Restaurant } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Dashboard() {
   const [view, setView] = useState("all");
@@ -82,6 +84,17 @@ export default function Dashboard() {
           >
             <CreditCard className="h-4 w-4 mr-2" />
             <span className="whitespace-nowrap">Añadir Transacción</span>
+          </Button>
+          <Button 
+            variant="outline" 
+            size={isMobile ? "sm" : "default"}
+            className="h-8"
+            asChild
+          >
+            <Link to="/restaurant-occupancy">
+              <Restaurant className="h-4 w-4 mr-2" />
+              <span className="whitespace-nowrap">Dashboard Restaurante</span>
+            </Link>
           </Button>
         </div>
       </div>
