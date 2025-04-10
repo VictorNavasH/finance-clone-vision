@@ -1,8 +1,8 @@
 
 import { Layout } from "@/components/Layout";
-import { ExpenseForm } from "@/components/expenses/ExpenseForm";
-import { RecentExpensesTable } from "@/components/expenses/RecentExpensesTable";
-import { ExpenseStats } from "@/components/expenses/ExpenseStats";
+import ExpenseForm from "@/components/expenses/ExpenseForm";
+import RecentExpensesTable from "@/components/expenses/RecentExpensesTable";
+import ExpenseStats from "@/components/expenses/ExpenseStats";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Expenses() {
