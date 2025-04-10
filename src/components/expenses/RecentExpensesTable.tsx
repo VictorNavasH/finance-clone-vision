@@ -37,7 +37,7 @@ interface RecentExpensesTableProps {
 }
 
 export default function RecentExpensesTable({ 
-  expenses, 
+  expenses = [], // Provide a default empty array
   showActions = false, 
   onView,
   onEdit, 

@@ -4,8 +4,41 @@ import ExpenseForm from "@/components/expenses/ExpenseForm";
 import RecentExpensesTable from "@/components/expenses/RecentExpensesTable";
 import ExpenseStats from "@/components/expenses/ExpenseStats";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useState } from "react";
 
 export default function Expenses() {
+  // Mock data for expenses
+  const [expenses] = useState([
+    {
+      id: 1,
+      description: "Material de oficina",
+      category: "Suministros",
+      amount: "€45,00",
+      date: "10/04/2025"
+    },
+    {
+      id: 2,
+      description: "Publicidad en redes sociales",
+      category: "Marketing",
+      amount: "€120,00",
+      date: "08/04/2025"
+    },
+    {
+      id: 3,
+      description: "Suscripción software",
+      category: "Servicios",
+      amount: "€59,99",
+      date: "05/04/2025"
+    },
+    {
+      id: 4,
+      description: "Alquiler local",
+      category: "Alquiler",
+      amount: "€800,00",
+      date: "01/04/2025"
+    }
+  ]);
+
   return (
     <Layout>
       <div className="dashboard-container">
@@ -19,7 +52,7 @@ export default function Expenses() {
           
           <TabsContent value="overview" className="space-y-6">
             <ExpenseStats />
-            <RecentExpensesTable />
+            <RecentExpensesTable expenses={expenses} />
           </TabsContent>
           
           <TabsContent value="add">
