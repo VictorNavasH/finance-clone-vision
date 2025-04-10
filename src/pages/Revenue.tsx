@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -6,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { LineChart, AreaChart, Line, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Calendar, Download, Filter, Plus } from "lucide-react";
 import { Layout } from "@/components/Layout";
+import { useToast } from "@/hooks/use-toast";
 
 const revenueData = [
   { month: 'Ene', sales: 8500, services: 2500, subscriptions: 1500, total: 12500 },
@@ -29,25 +29,75 @@ const revenueBySource = [
 ];
 
 export default function Revenue() {
+  const { toast } = useToast();
+  const [yearFilter, setYearFilter] = useState("2023");
+  
+  const handleExport = () => {
+    toast({
+      title: "Exportando datos",
+      description: "Los datos de ingresos se están exportando",
+    });
+    // Aquí iría la lógica real de exportación
+    setTimeout(() => {
+      toast({
+        title: "Exportación completada",
+        description: "Los datos se han exportado correctamente",
+        variant: "success",
+      });
+    }, 1500);
+  };
+  
+  const handleFilter = () => {
+    toast({
+      title: "Filtros aplicados",
+      description: "Mostrando datos filtrados",
+    });
+    // Aquí iría la lógica real de filtrado
+  };
+  
+  const handleAddRevenue = () => {
+    toast({
+      title: "Nuevo ingreso",
+      description: "Funcionalidad para añadir un nuevo ingreso en desarrollo",
+    });
+    // Aquí iría la lógica para abrir un formulario de nuevo ingreso
+  };
+  
+  const handleYearChange = () => {
+    // Alternar entre 2022 y 2023 para demostración
+    const newYear = yearFilter === "2023" ? "2022" : "2023";
+    setYearFilter(newYear);
+    
+    toast({
+      title: `Año cambiado: ${newYear}`,
+      description: `Mostrando datos del año ${newYear}`,
+    });
+  };
+
   return (
     <Layout>
       <div>
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
           <h2 className="text-3xl font-bold">Análisis de Ingresos</h2>
           <div className="flex flex-wrap gap-2">
-            <Button variant="outline" size="sm" className="h-9">
+            <Button variant="outline" size="sm" className="h-9" onClick={handleYearChange}>
               <Calendar className="h-4 w-4 mr-2" />
-              Año 2023
+              Año {yearFilter}
             </Button>
-            <Button variant="outline" size="sm" className="h-9">
+            <Button variant="outline" size="sm" className="h-9" onClick={handleFilter}>
               <Filter className="h-4 w-4 mr-2" />
               Filtrar
             </Button>
-            <Button variant="outline" size="sm" className="h-9">
+            <Button variant="outline" size="sm" className="h-9" onClick={handleExport}>
               <Download className="h-4 w-4 mr-2" />
               Exportar
             </Button>
-            <Button style={{ backgroundColor: "#227C9D" }} size="sm" className="h-9">
+            <Button 
+              style={{ backgroundColor: "#227C9D" }} 
+              size="sm" 
+              className="h-9"
+              onClick={handleAddRevenue}
+            >
               <Plus className="h-4 w-4 mr-2" />
               Añadir Ingreso
             </Button>
