@@ -67,7 +67,7 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="p-3 sm:p-4">
+    <div>
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-3">
         <h1 className="text-2xl sm:text-3xl font-bold text-finance-text">Cuadro de Mando</h1>
         <div className="flex flex-wrap gap-2">
