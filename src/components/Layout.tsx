@@ -48,7 +48,7 @@ export function Layout({ children }: LayoutProps) {
         />
       )}
       
-      {/* Contenido principal */}
+      {/* Contenido principal - Ajustando los márgenes */}
       <div className={cn(
         "flex flex-col flex-1 transition-all duration-300 overflow-auto",
         !isMobile && sidebarOpen ? "ml-64" : !isMobile && !sidebarOpen ? "ml-16" : ""
@@ -58,7 +58,7 @@ export function Layout({ children }: LayoutProps) {
           onSidebarOpenChange={setSidebarOpen} 
         />
 
-        <main className="flex-1 overflow-auto p-6">
+        <main className="flex-1 overflow-auto">
           {children}
         </main>
 

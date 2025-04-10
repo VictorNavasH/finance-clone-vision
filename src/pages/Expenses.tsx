@@ -41,7 +41,7 @@ export default function Expenses() {
 
   return (
     <Layout>
-      <div className="dashboard-container">
+      <div className="p-6 md:p-8 lg:p-10">
         <h1 className="text-3xl font-bold mb-8 text-finance-text">Gestión de Gastos</h1>
         
         <Tabs defaultValue="overview" className="w-full">
@@ -55,7 +55,7 @@ export default function Expenses() {
             <RecentExpensesTable expenses={expenses} />
           </TabsContent>
           
-          <TabsContent value="add">
+          <TabsContent value="add" className="max-w-3xl mx-auto">
             <ExpenseForm />
           </TabsContent>
         </Tabs>
