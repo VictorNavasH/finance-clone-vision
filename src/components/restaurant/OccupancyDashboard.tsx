@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -258,9 +259,7 @@ export default function OccupancyDashboard() {
           <TabsTrigger value="input">Datos de Entrada</TabsTrigger>
           <TabsTrigger value="results">Resultados</TabsTrigger>
         </TabsList>
-      </Tabs>
-
-      <div className="space-y-3">
+      
         <TabsContent value="input" className="mt-0">
           <Card>
             <CardHeader>
@@ -864,7 +863,8 @@ export default function OccupancyDashboard() {
             </>
           )}
         </TabsContent>
-      </div>
+      </Tabs>
     </div>
   );
 }
+
