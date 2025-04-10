@@ -1,3 +1,4 @@
+
 import { KpiBlock } from "@/components/ui/kpi-block";
 import RevenueChart from "@/components/dashboard/RevenueChart";
 import ExpenseBreakdown from "@/components/dashboard/ExpenseBreakdown";

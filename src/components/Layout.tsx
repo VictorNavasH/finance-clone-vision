@@ -58,7 +58,7 @@ export function Layout({ children }: LayoutProps) {
           onSidebarOpenChange={setSidebarOpen} 
         />
 
-        <main className="flex-1 overflow-auto">
+        <main className="flex-1 overflow-auto page-content">
           {children}
         </main>
 

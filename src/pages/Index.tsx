@@ -5,9 +5,7 @@ import Dashboard from "@/components/Dashboard";
 const Index = () => {
   return (
     <Layout>
-      <div className="page-content">
-        <Dashboard />
-      </div>
+      <Dashboard />
     </Layout>
   );
 }
