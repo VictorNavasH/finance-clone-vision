@@ -83,7 +83,7 @@ export default function AppSidebar({
                         isActive 
                           ? "bg-finance-primary text-white" 
                           : "text-finance-text hover:bg-finance-light hover:text-finance-primary",
-                        collapsed ? "justify-center" : ""
+                        collapsed ? "justify-center" : "justify-start"
                       )}
                     >
                       <item.icon className={cn("h-5 w-5", collapsed ? "" : "mr-3")} />

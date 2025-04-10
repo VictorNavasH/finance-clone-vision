@@ -118,6 +118,15 @@
   .hover-glow {
     @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/20;
   }
+  
+  /* Dashboard content padding */
+  .dashboard-container {
+    @apply p-6;
+  }
+  
+  .dashboard-card {
+    @apply rounded-lg shadow-md transition-shadow hover:shadow-lg;
+  }
 }
 
 /* Custom scrollbar */
