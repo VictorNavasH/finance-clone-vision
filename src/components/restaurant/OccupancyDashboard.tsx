@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -56,6 +55,7 @@ interface CalculatedResults {
   profitPerAttendee: number;
   attendeesPerSeatPerDay: number;
   breakEvenOccupancy: number;
+  totalAttendance: number;
 }
 
 export default function OccupancyDashboard() {
@@ -160,7 +160,8 @@ export default function OccupancyDashboard() {
       netProfitMargin,
       profitPerAttendee,
       attendeesPerSeatPerDay,
-      breakEvenOccupancy
+      breakEvenOccupancy,
+      totalAttendance: data.totalAttendance
     });
   };
 

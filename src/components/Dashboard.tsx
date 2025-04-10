@@ -1,4 +1,3 @@
-
 import { KpiBlock } from "@/components/ui/kpi-block";
 import RevenueChart from "@/components/dashboard/RevenueChart";
 import ExpenseBreakdown from "@/components/dashboard/ExpenseBreakdown";
@@ -6,7 +5,7 @@ import BudgetProgress from "@/components/dashboard/BudgetProgress";
 import ForecastCard from "@/components/dashboard/ForecastCard";
 import UpcomingPayments from "@/components/dashboard/UpcomingPayments";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Calendar, CreditCard, DollarSign, TrendingUp, TrendingDown, PiggyBank, Restaurant } from "lucide-react";
+import { Calendar, CreditCard, DollarSign, TrendingUp, TrendingDown, PiggyBank, Utensils } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useState } from "react";
@@ -16,7 +15,6 @@ export default function Dashboard() {
   const [view, setView] = useState("all");
   const isMobile = useIsMobile();
   
-  // Datos de ejemplo para KPIs
   const kpiData = [
     {
       title: "Ingresos Totales",
@@ -92,7 +90,7 @@ export default function Dashboard() {
             asChild
           >
             <Link to="/restaurant-occupancy">
-              <Restaurant className="h-4 w-4 mr-2" />
+              <Utensils className="h-4 w-4 mr-2" />
               <span className="whitespace-nowrap">Dashboard Restaurante</span>
             </Link>
           </Button>
@@ -109,7 +107,6 @@ export default function Dashboard() {
       </Tabs>
       
       <div className="space-y-3">
-        {/* KPI Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {kpiData.map((kpi, index) => (
             <KpiBlock
@@ -125,12 +122,10 @@ export default function Dashboard() {
           ))}
         </div>
         
-        {/* Revenue Chart */}
         <div className="grid grid-cols-1 gap-3">
           <RevenueChart />
         </div>
         
-        {/* Other Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-3">
           <ExpenseBreakdown />
           <BudgetProgress />
