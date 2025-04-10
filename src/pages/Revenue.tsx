@@ -42,7 +42,7 @@ export default function Revenue() {
       toast({
         title: "Exportación completada",
         description: "Los datos se han exportado correctamente",
-        variant: "success",
+        variant: "default",
       });
     }, 1500);
   };
