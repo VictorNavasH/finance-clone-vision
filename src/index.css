@@ -121,7 +121,7 @@
   
   /* Dashboard content padding */
   .dashboard-container {
-    @apply p-6;
+    @apply p-6 md:p-8;
   }
   
   .dashboard-card {

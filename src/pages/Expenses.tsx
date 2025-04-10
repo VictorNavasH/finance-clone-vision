@@ -42,15 +42,15 @@ export default function Expenses() {
   return (
     <Layout>
       <div className="dashboard-container">
-        <h1 className="text-3xl font-bold mb-6 text-finance-text">Gestión de Gastos</h1>
+        <h1 className="text-3xl font-bold mb-8 text-finance-text">Gestión de Gastos</h1>
         
         <Tabs defaultValue="overview" className="w-full">
-          <TabsList className="mb-4">
+          <TabsList className="mb-6">
             <TabsTrigger value="overview">Visión General</TabsTrigger>
             <TabsTrigger value="add">Añadir Gasto</TabsTrigger>
           </TabsList>
           
-          <TabsContent value="overview" className="space-y-6">
+          <TabsContent value="overview" className="space-y-8">
             <ExpenseStats />
             <RecentExpensesTable expenses={expenses} />
           </TabsContent>
