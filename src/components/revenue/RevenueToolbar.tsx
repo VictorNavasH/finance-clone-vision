@@ -1,7 +1,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Calendar, Download, Filter, Plus } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 
 interface RevenueToolbarProps {
   yearFilter: string;
@@ -19,9 +18,9 @@ const RevenueToolbar = ({
   onAddRevenue 
 }: RevenueToolbarProps) => {
   return (
-    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
       <h2 className="text-3xl font-bold">Análisis de Ingresos</h2>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-3">
         <Button variant="outline" size="sm" className="h-9" onClick={onYearChange}>
           <Calendar className="h-4 w-4 mr-2" />
           Año {yearFilter}

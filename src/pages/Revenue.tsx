@@ -71,7 +71,7 @@ export default function Revenue() {
 
   return (
     <Layout>
-      <div>
+      <div className="flex flex-col space-y-6">
         <RevenueToolbar 
           yearFilter={yearFilter}
           onYearChange={() => setShowYearFilter(true)}
@@ -84,7 +84,7 @@ export default function Revenue() {
         
         <RevenueTrendsChart data={revenueData} />
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <RevenueBySource data={revenueBySource} />
           <QuarterlyRevenue />
         </div>

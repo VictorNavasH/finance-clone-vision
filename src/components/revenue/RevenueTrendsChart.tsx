@@ -15,7 +15,7 @@ interface RevenueTrendsChartProps {
 
 const RevenueTrendsChart = ({ data }: RevenueTrendsChartProps) => {
   return (
-    <Card className="mb-8 shadow-sm">
+    <Card className="shadow-sm">
       <CardHeader>
         <CardTitle>Tendencias de Ingresos</CardTitle>
         <CardDescription>Desglose mensual de ingresos por fuente</CardDescription>
