@@ -31,7 +31,7 @@ const revenueBySource = [
 export default function Revenue() {
   return (
     <Layout>
-      <div className="dashboard-container">
+      <div className="w-full">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl font-bold">Análisis de Ingresos</h2>
           <div className="flex gap-2">
