@@ -3,12 +3,13 @@ import { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Settings as SettingsIcon, User, Bell, Globe, Shield } from "lucide-react";
+import { Settings as SettingsIcon, User, Bell, Globe, Shield, Cpu } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 
 const Settings = () => {
@@ -21,6 +22,13 @@ const Settings = () => {
   });
 
   const [theme, setTheme] = useState("light");
+  
+  const [aiSettings, setAiSettings] = useState({
+    enableAnalysis: true,
+    enablePredictions: true,
+    dataSharing: false,
+    modelType: "balanced"
+  });
 
   const handleSaveProfile = (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,6 +53,10 @@ const Settings = () => {
     e.preventDefault();
     toast.success("Configuración de seguridad actualizada");
   };
+  
+  const handleSaveAiSettings = () => {
+    toast.success("Configuración de IA actualizada correctamente");
+  };
 
   return (
     <Layout>
@@ -55,7 +67,7 @@ const Settings = () => {
         </div>
 
         <Tabs defaultValue="profile" className="w-full">
-          <TabsList className="grid grid-cols-4 mb-8">
+          <TabsList className="grid grid-cols-5 mb-8">
             <TabsTrigger value="profile" className="flex items-center gap-2">
               <User className="h-4 w-4" />
               <span>Perfil</span>
@@ -71,6 +83,10 @@ const Settings = () => {
             <TabsTrigger value="security" className="flex items-center gap-2">
               <Shield className="h-4 w-4" />
               <span>Seguridad</span>
+            </TabsTrigger>
+            <TabsTrigger value="ai" className="flex items-center gap-2">
+              <Cpu className="h-4 w-4" />
+              <span>Inteligencia Artificial</span>
             </TabsTrigger>
           </TabsList>
 
@@ -281,6 +297,80 @@ const Settings = () => {
                     </Button>
                   </div>
                 </form>
+              </CardContent>
+            </Card>
+          </TabsContent>
+          
+          <TabsContent value="ai">
+            <Card>
+              <CardHeader>
+                <CardTitle>Configuración de Inteligencia Artificial</CardTitle>
+                <CardDescription>
+                  Personaliza cómo la IA analiza tus datos financieros y genera predicciones.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-medium">Análisis Inteligente</p>
+                      <p className="text-sm text-muted-foreground">
+                        Permite que la IA analice tus datos financieros para sugerir mejoras.
+                      </p>
+                    </div>
+                    <Switch 
+                      checked={aiSettings.enableAnalysis}
+                      onCheckedChange={(checked) => setAiSettings({...aiSettings, enableAnalysis: checked})}
+                    />
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-medium">Predicciones de Tendencias</p>
+                      <p className="text-sm text-muted-foreground">
+                        Habilita predicciones basadas en el historial de ingresos y gastos.
+                      </p>
+                    </div>
+                    <Switch 
+                      checked={aiSettings.enablePredictions}
+                      onCheckedChange={(checked) => setAiSettings({...aiSettings, enablePredictions: checked})}
+                    />
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-medium">Compartir Datos Anónimos</p>
+                      <p className="text-sm text-muted-foreground">
+                        Ayuda a mejorar nuestros modelos compartiendo datos anónimos.
+                      </p>
+                    </div>
+                    <Switch 
+                      checked={aiSettings.dataSharing}
+                      onCheckedChange={(checked) => setAiSettings({...aiSettings, dataSharing: checked})}
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="ai-model">Tipo de Modelo de IA</Label>
+                    <Select 
+                      value={aiSettings.modelType} 
+                      onValueChange={(value) => setAiSettings({...aiSettings, modelType: value})}
+                    >
+                      <SelectTrigger id="ai-model" className="w-full">
+                        <SelectValue placeholder="Selecciona un tipo de modelo" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="conservative">Conservador (menos predicciones, más precisas)</SelectItem>
+                        <SelectItem value="balanced">Equilibrado (recomendado)</SelectItem>
+                        <SelectItem value="aggressive">Agresivo (más predicciones, menos precisas)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <Button onClick={handleSaveAiSettings} className="mt-2">
+                    Guardar configuración de IA
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </TabsContent>
